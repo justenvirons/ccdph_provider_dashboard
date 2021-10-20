@@ -1,0 +1,3 @@
+cd layers
+del *.zip
+7z a SCC_covid_vaccine_providers_latest.zip SCC_covid_vaccine_providers_latest.shp.*
