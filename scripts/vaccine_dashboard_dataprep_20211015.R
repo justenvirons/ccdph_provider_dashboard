@@ -157,3 +157,22 @@ shell.exec(file.path(paste0(getwd(), "/zipfiles.bat")))
 ccdph_svi_tracts <- st_read("E:/OneDrive - Cook County Health/git_repos/justenvirons/ccdph_cha/layers/ccdph_svi_tracts_districts_sum.shp")
 ccdph_svi_tracts <- ccdph_svi_tracts %>% st_transform(crs=3435)
 ccdph_svi_tracts <- ccdph_svi_tracts
+
+scc_providers <- scc_providers_districts %>% 
+  bind_cols(as.data.frame(st_coordinates(scc_providers))) %>%
+  mutate(unique_xy = paste0(X,";",Y))
+
+scc_providers_unique <- scc_providers %>%
+  group_by(unique_xy) %>%
+  summarise(count = n(),
+            max_id = as.integer(max(objectid)))
+
+scc_providers <- scc_providers %>% 
+  right_join(scc_providers_unique %>% st_drop_geometry(),by="unique_xy")
+
+rm(scc_providers_unique)
+  
+st_write(scc_providers,"layers/scc_providers_latest.shp", append=FALSE)
+
+case_when("3250 N Arlington Heights Rd Suite 300")
+  

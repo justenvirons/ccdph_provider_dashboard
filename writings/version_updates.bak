@@ -1,0 +1,16 @@
+version 0.2 updates
+
+- added "18 to elevate" priority filter
+- added SVI by muni layer
+- added SVI by census tract layer
+- added active status of providers
+- changed population query to muni (shapefile, csv)
+- added population by race/ethnicity chart using muni csv
+- added population, SVI popup summary by census tract
+- added population, SVI popup summary by municipality
+- added link to public GitHub for data downloads
+
+still to do
+- add direct links to key data downloads (providers dataset)
+- update to latest provider list
+- create ReadMe for GitHub
